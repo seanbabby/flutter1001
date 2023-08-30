@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hello_mdfk/colors.dart';
 import 'package:hello_mdfk/page/homepagepage.dart';
 import 'package:hello_mdfk/state/darkmodeprovider.dart';
+import 'package:hello_mdfk/supplemental/cut_corners_border.dart';
 import 'package:provider/provider.dart';
 import 'state/appthemestate.dart';
 import 'state/myappstate.dart';
@@ -91,7 +92,22 @@ ThemeData _buildMyAppTheme() {
         error: kShrineErrorRed,
       ),
       // 用自定義 TextTheme 設定
-      textTheme: _buildMyAppTextTheme(base.textTheme));
+      textTheme: _buildMyAppTextTheme(base.textTheme),
+      textSelectionTheme:
+          const TextSelectionThemeData(selectionColor: kShrinePink100),
+      appBarTheme: const AppBarTheme(
+        foregroundColor: kShrineBrown900,
+        backgroundColor: kShrinePink100,
+      ),
+      inputDecorationTheme: const InputDecorationTheme(
+          // flutter sample 提供的自訂義 border
+          border: CutCornersBorder(),
+          focusedBorder: CutCornersBorder(
+            borderSide: BorderSide(width: 2.0, color: kShrineBrown900),
+          ),
+          floatingLabelStyle: TextStyle(
+            color: kShrineBrown900,
+          )));
 }
 
 // Material design text style guide: https://m3.material.io/styles/typography/type-scale-tokens#40fc37f8-3269-4aa3-9f28-c6113079ac5d

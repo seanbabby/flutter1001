@@ -1,5 +1,6 @@
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
+import 'package:hello_mdfk/colors.dart';
 import 'package:hello_mdfk/smallcard.dart';
 import 'package:hello_mdfk/state/appthemestate.dart';
 import 'package:hello_mdfk/state/myappstate.dart';
@@ -51,6 +52,12 @@ class GeneratorPage extends StatelessWidget {
                 },
                 icon: Icon(icon),
                 label: const Text('Like'),
+                style: ElevatedButton.styleFrom(
+                  elevation: 8.0,
+                  shape: const BeveledRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(7.0)),
+                  ),
+                ),
               ),
               const SizedBox(
                 width: 10,
@@ -67,6 +74,7 @@ class GeneratorPage extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 10),
+          // 文字輸入框
           TextField(
             // 監聽用
             controller: inputTextController,
@@ -74,6 +82,18 @@ class GeneratorPage extends StatelessWidget {
             obscureText: false,
             // InputDecoration 外觀設定
             decoration: const InputDecoration(
+              border: OutlineInputBorder(
+                borderSide: BorderSide(width: 5.0, color: Colors.white),
+              ),
+              // onFocus 時的狀態
+              focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                width: 2.0,
+                color: Colors.red,
+              )),
+              // 懸浮 label 的 style
+              floatingLabelStyle:
+                  TextStyle(color: kShrineBrown900, fontSize: 20.0),
               // filled 是否以淺色填滿背景, 應該是吃 theme?
               filled: true,
               // labelText focus 時會往上移動懸浮, 不會消失

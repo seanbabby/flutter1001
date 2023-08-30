@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hello_mdfk/page/bordersamplepage.dart';
 import 'package:hello_mdfk/page/changethemepage.dart';
 import 'package:hello_mdfk/page/shoppage.dart';
 import 'favoritespage.dart';
@@ -31,6 +32,12 @@ class _MyHomePageState extends State<MyHomePage> {
       case 3:
         page = const ChangeThemePage();
         break;
+      case 4:
+        page = const BorderSamplePage();
+        break;
+      case 99:
+        // Placeholder: 这是一个便捷易用的 widget，可以在其放置地方绘制一个交叉矩形，以便将界面的该部分标记为未完成
+        page = const Placeholder();
       default:
         throw UnimplementedError('no widget for $selectedIndex');
     }
@@ -70,7 +77,11 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   NavigationRailDestination(
                     icon: Icon(Icons.qr_code_rounded),
-                    label: Text('Q'),
+                    label: Text('Theme'),
+                  ),
+                  NavigationRailDestination(
+                    icon: Icon(Icons.account_circle),
+                    label: Text('Border'),
                   ),
                 ],
                 // 目前 index
