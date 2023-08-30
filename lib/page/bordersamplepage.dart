@@ -1,6 +1,7 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
+// 參考來源
+// https://cloud.tencent.com/developer/article/1942482 Flutter | 滚动组件，ListView，GridVIew等
+// https://blog.wangruofeng007.com/posts/c5552f91/    Flutter ShapeBorder 使用手册
 
 // ShapeBorder 用于设置形状和轮廓，比如圆形，矩形，圆角矩形等。常用于 Container 中。
 class BorderSamplePage extends StatelessWidget {
