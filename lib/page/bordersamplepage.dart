@@ -17,21 +17,21 @@ class BorderSamplePage extends StatelessWidget {
         // ListView 外面要包一個 Expanded, 否則不知道 ListView 高度會不顯示
         Expanded(
           child: _itemList(),
-          // ListView(
-          //   // ListView 少量時可以使用 children[], 項目較多時候請用 builder
-          //   children: [
-          //     const Center(child: Text('一般型狀用 Border')),
-          //     _beveledRectangleBorder(),
-          //     _borderDirectional(),
-          //     _borderDirectionalHorizon(),
-          //     _circleBorder1(),
-          //     _continuousRectangleBorder(),
-          //     _roundedRectangleBorder(),
-          //     _stadiumBorder(),
-          //     const Center(child: Text('文字輸入用 Border')),
-          //     _outlineInputBorder(),
-          //     _underlineInputBorder()
-          //   ],
+          //   ListView(
+          // // ListView 少量時可以使用 children[], 項目較多時候請用 builder
+          // children: [
+          //   const Center(child: Text('一般型狀用 Border')),
+          //   _beveledRectangleBorder(),
+          //   _borderDirectional(),
+          //   _borderDirectionalHorizon(),
+          //   _circleBorder1(),
+          //   _continuousRectangleBorder(),
+          //   _roundedRectangleBorder(),
+          //   _stadiumBorder(),
+          //   const Center(child: Text('文字輸入用 Border')),
+          //   _outlineInputBorder(),
+          //   _underlineInputBorder()
+          // ],
           // ),
         ),
       ],
@@ -49,6 +49,10 @@ Widget _itemList() {
     itemCount: 100,
     // 強制 item 高度
     //itemExtent: 0,
+    // 物件是否緩存
+    addAutomaticKeepAlives: true,
+    // true 避免列表项不必要的重绘
+    addRepaintBoundaries: true,
     itemBuilder: (context, index) {
       // return _outlineInputBorder();
       return _SampleItem(context, index);

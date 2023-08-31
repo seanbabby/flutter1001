@@ -105,6 +105,7 @@ class GeneratorPage extends StatelessWidget {
           // SizedBox 做間隔用
           const SizedBox(height: 10),
           // 水平排列
+          // OverflowBar会将其子项排成一行，当其子项“溢出”可用的水平空间，OverflowBar会将其子项排成一列。
           OverflowBar(children: [
             // TextButton 文字按鈕
             TextButton(
