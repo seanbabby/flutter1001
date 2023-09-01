@@ -55,18 +55,18 @@ Widget _itemList() {
     addRepaintBoundaries: true,
     itemBuilder: (context, index) {
       // return _outlineInputBorder();
-      return _SampleItem(context, index);
+      return _SampleItem();
     },
     separatorBuilder: (context, index) {
       return const Divider(
         // 這裡的高度是整個 Divider 的高度, 不是線的高度
-        height: 16.0,
+        height: 50.0,
         // 線的高度
-        thickness: 3.0,
+        thickness: 20.0,
         // 左邊縮排
         indent: 10.0,
         // 右邊縮排
-        endIndent: 10.0,
+        endIndent: 50.0,
         color: Colors.amber,
       );
     },
@@ -75,6 +75,7 @@ Widget _itemList() {
 
 // BeveledRectangleBorder 斜面圆角矩形
 Widget _beveledRectangleBorder() {
+  print('shape: 1');
   return Center(
     child: Container(
       width: 240,
@@ -99,6 +100,7 @@ Widget _beveledRectangleBorder() {
 
 // BorderDirectional 控制四邊的邊線
 Widget _borderDirectional() {
+  print('shape: 2');
   return Center(
     child: Container(
       width: 240,
@@ -125,6 +127,7 @@ Widget _borderDirectional() {
 
 // BorderDirectional 只控制兩邊
 Widget _borderDirectionalHorizon() {
+  print('shape: 3');
   return Center(
     child: Container(
       width: 240,
@@ -132,12 +135,9 @@ Widget _borderDirectionalHorizon() {
       margin: const EdgeInsets.all(16),
       decoration: const ShapeDecoration(
         color: Colors.white,
-        image: DecorationImage(
-          image: AssetImage('assets/diamond.png'),
-        ),
         shape: BorderDirectional(
-          start: BorderSide(color: Color.fromARGB(255, 12, 46, 98), width: 15),
-          end: BorderSide(color: Colors.red, width: 15),
+          start: BorderSide(color: Color.fromARGB(255, 12, 46, 98), width: 75),
+          end: BorderSide(color: Colors.red, width: 75),
         ),
       ),
     ),
@@ -146,6 +146,7 @@ Widget _borderDirectionalHorizon() {
 
 // 圓形
 Widget _circleBorder1() {
+  print('shape: 4');
   return Center(
     child: Container(
       width: 120,
@@ -157,7 +158,7 @@ Widget _circleBorder1() {
         ),
         shape: CircleBorder(
           side: BorderSide(
-              width: 2.0, color: Colors.yellow, style: BorderStyle.solid),
+              width: 2.0, color: Colors.green, style: BorderStyle.solid),
         ),
       ),
     ),
@@ -166,6 +167,7 @@ Widget _circleBorder1() {
 
 // 平滑圓角矩形
 Widget _continuousRectangleBorder() {
+  print('shape: 5');
   return Center(
     child: Container(
       width: 240,
@@ -176,7 +178,7 @@ Widget _continuousRectangleBorder() {
           image: AssetImage('assets/diamond.png'),
         ),
         shape: ContinuousRectangleBorder(
-          borderRadius: BorderRadius.circular(40),
+          borderRadius: BorderRadius.circular(60),
           side: const BorderSide(
             width: 2,
             color: Colors.blue,
@@ -190,6 +192,7 @@ Widget _continuousRectangleBorder() {
 
 // 平常我們在用的圓角矩形
 Widget _roundedRectangleBorder() {
+  print('shape: 6');
   return Center(
     child: Container(
       width: 240,
@@ -214,6 +217,7 @@ Widget _roundedRectangleBorder() {
 
 // 體育場矩形, 兩邊為半圓
 Widget _stadiumBorder() {
+  print('shape: 7');
   return Center(
     child: Container(
       width: 240,
@@ -237,6 +241,7 @@ Widget _stadiumBorder() {
 
 // OutlineInputBorder
 Widget _outlineInputBorder() {
+  print('shape: 8');
   return Center(
     child: Container(
       margin: const EdgeInsets.all(16),
@@ -258,6 +263,7 @@ Widget _outlineInputBorder() {
 
 // 底線
 Widget _underlineInputBorder() {
+  print('shape: 9');
   return Center(
     child: Container(
       margin: const EdgeInsets.all(16),
@@ -278,13 +284,13 @@ Widget _underlineInputBorder() {
 }
 
 class _SampleItem extends StatelessWidget {
-  final int index;
+  // final int index;
 
-  _SampleItem(BuildContext context, this.index) : super(key: ValueKey(index));
+  // _SampleItem(BuildContext context, this.index) : super(key: ValueKey(index));
 
   @override
   Widget build(BuildContext context) {
-    print('index: $index');
+    // print('index: $index');
     return Row(
       children: [_sampleCircle(), _sampleContent()],
     );
