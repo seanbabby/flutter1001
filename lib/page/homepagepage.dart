@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:googleapis/youtube/v3.dart';
+import 'package:hello_mdfk/model/playlists.dart';
+import 'package:hello_mdfk/page/adaptivepage.dart';
 import 'package:hello_mdfk/page/bordersamplepage.dart';
 import 'package:hello_mdfk/page/changethemepage.dart';
 import 'package:hello_mdfk/page/shoppage.dart';
@@ -34,6 +37,12 @@ class _MyHomePageState extends State<MyHomePage> {
         break;
       case 4:
         page = const BorderSamplePage();
+        break;
+      case 5:
+        page = const AdaptivePage();
+        break;
+      case 6:
+        page = const Playlists();
         break;
       case 99:
         // Placeholder: 这是一个便捷易用的 widget，可以在其放置地方绘制一个交叉矩形，以便将界面的该部分标记为未完成
@@ -82,6 +91,14 @@ class _MyHomePageState extends State<MyHomePage> {
                   NavigationRailDestination(
                     icon: Icon(Icons.account_circle),
                     label: Text('Border'),
+                  ),
+                  NavigationRailDestination(
+                    icon: Icon(Icons.add_to_queue),
+                    label: Text('Adaptive'),
+                  ),
+                  NavigationRailDestination(
+                    icon: Icon(Icons.list_rounded),
+                    label: Text('PlayList'),
                   ),
                 ],
                 // 目前 index

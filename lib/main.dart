@@ -1,11 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hello_mdfk/colors.dart';
+import 'package:hello_mdfk/model/playlists.dart';
 import 'package:hello_mdfk/page/homepagepage.dart';
+import 'package:hello_mdfk/page/playlist_details.dart';
 import 'package:hello_mdfk/state/darkmodeprovider.dart';
+import 'package:hello_mdfk/state/yt_play_list_state.dart';
 import 'package:hello_mdfk/supplemental/cut_corners_border.dart';
 import 'package:provider/provider.dart';
 import 'state/appthemestate.dart';
 import 'state/myappstate.dart';
+
+// From https://www.youtube.com/channel/UCwXdFgeE9KYzlDdR7TG9cMw
+const flutterDevAccountId = 'UCwXdFgeE9KYzlDdR7TG9cMw';
+
+// Replace with your YouTube API Key
+const youTubeApiKey = 'AIzaSyCH4gbwsktwSpJrESqNMGDnk7MOymMKY88';
 
 void main() {
   runApp(const MyApp());
@@ -41,12 +51,16 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider(create: (_) => DarkModeProvider()),
           ChangeNotifierProvider(create: (_) => ThemeState()),
           ChangeNotifierProvider(create: (_) => MyAppState()),
+          ChangeNotifierProvider(
+              create: (_) => FlutterDevPlaylists(
+                  flutterDevAccountId: flutterDevAccountId,
+                  youTubeApiKey: youTubeApiKey)),
         ],
         child: Consumer<DarkModeProvider>(
           builder: (_, darkmodeprovider, child) {
             return Consumer<ThemeState>(
               builder: (context, themestate, child) {
-                return MaterialApp(
+                return MaterialApp.router(
                   title: 'Namer App',
                   theme: switch (darkmodeprovider.darkMode) {
                     // case 1
@@ -56,7 +70,9 @@ class MyApp extends StatelessWidget {
                   },
                   darkTheme:
                       darkmodeprovider.darkMode == 2 ? _darkModeTheme() : null,
-                  home: const MyHomePage(),
+                  debugShowCheckedModeBanner: false,
+                  // home: const MyHomePage(),
+                  routerConfig: router,
                 );
               },
             );
@@ -64,6 +80,30 @@ class MyApp extends StatelessWidget {
         ));
   }
 }
+
+final router = GoRouter(
+  routes: <RouteBase>[
+    GoRoute(
+      path: '/',
+      builder: (context, state) {
+        return const MyHomePage();
+      },
+      routes: <RouteBase>[
+        GoRoute(
+          path: 'playlist/:id',
+          builder: (context, state) {
+            final title = state.uri.queryParameters['title']!;
+            final id = state.pathParameters['id']!;
+            return PlaylistDetails(
+              playlistId: id,
+              playlistName: title,
+            );
+          },
+        ),
+      ],
+    ),
+  ],
+);
 
 // 可選擇顏色主題
 ThemeData _selectColorTheme(String color) {
