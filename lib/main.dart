@@ -94,9 +94,11 @@ final router = GoRouter(
           builder: (context, state) {
             final title = state.uri.queryParameters['title']!;
             final id = state.pathParameters['id']!;
-            return PlaylistDetails(
-              playlistId: id,
-              playlistName: title,
+            return Scaffold(
+              body: PlaylistDetails(
+                playlistId: id,
+                playlistName: title,
+              ),
             );
           },
         ),

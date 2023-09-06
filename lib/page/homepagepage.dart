@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:googleapis/youtube/v3.dart';
+import 'package:hello_mdfk/model/adaptive_playlists.dart';
 import 'package:hello_mdfk/model/playlists.dart';
 import 'package:hello_mdfk/page/adaptivepage.dart';
 import 'package:hello_mdfk/page/bordersamplepage.dart';
@@ -42,7 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
         page = const AdaptivePage();
         break;
       case 6:
-        page = const Playlists();
+        page = const AdaptivePlaylists();
         break;
       case 99:
         // Placeholder: 这是一个便捷易用的 widget，可以在其放置地方绘制一个交叉矩形，以便将界面的该部分标记为未完成

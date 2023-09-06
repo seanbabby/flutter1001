@@ -55,7 +55,7 @@ Widget _itemList() {
     addRepaintBoundaries: true,
     itemBuilder: (context, index) {
       // return _outlineInputBorder();
-      return _SampleItem();
+      return _getItem(index);
     },
     separatorBuilder: (context, index) {
       return const Divider(
@@ -71,6 +71,17 @@ Widget _itemList() {
       );
     },
   );
+}
+
+Widget _getItem(int index) {
+  switch (index % 4) {
+    case 0:
+      return _AdaptiveSampleItem();
+    case 1:
+      return _matchParentSampleItem();
+    default:
+      return _SampleItem();
+  }
 }
 
 // BeveledRectangleBorder 斜面圆角矩形
@@ -283,6 +294,7 @@ Widget _underlineInputBorder() {
   );
 }
 
+// 基礎 sample item
 class _SampleItem extends StatelessWidget {
   // final int index;
 
@@ -339,5 +351,108 @@ Widget _sampleContent() {
         Text('sample user name'),
       ]),
     ),
+  );
+}
+
+// 自適應 item
+class _AdaptiveSampleItem extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // 讀取媒體裝置數據 https://ithelp.ithome.com.tw/articles/10225698
+    final mediaQuery = MediaQuery.of(context);
+    // 圖片寬變動
+    final iconWidth = mediaQuery.size.width * 0.1;
+    // 讀取裝置的像素比率
+    final fontSize = mediaQuery.devicePixelRatio * 16;
+    // 是個狠人
+    final fontAdaptiveWidth = mediaQuery.size.width * 0.03;
+    return Row(
+      children: [
+        _adaptiveSampleCircle(iconWidth),
+        _adaptiveSampleContent(fontSize, fontAdaptiveWidth),
+      ],
+    );
+  }
+}
+
+// 自適應圓形
+Widget _adaptiveSampleCircle(double size) {
+  return Center(
+    child: Container(
+      // 外部傳進自定義 size
+      width: size,
+      height: size,
+      margin: const EdgeInsets.all(16),
+      decoration: const ShapeDecoration(
+        image: DecorationImage(
+            image: AssetImage('assets/sweat.gif'), fit: BoxFit.fitHeight),
+        shape: CircleBorder(
+          side: BorderSide(
+              width: 2.0, color: Colors.blueGrey, style: BorderStyle.solid),
+        ),
+      ),
+    ),
+  );
+}
+
+// 字體大小自適應
+Widget _adaptiveSampleContent(double pixelRatio, double adaptiveWidth) {
+  return Center(
+    child: Container(
+      // 沒定義寬高的話, 跟著內容變動
+      // width: ,
+      // height: ,
+      margin: const EdgeInsets.fromLTRB(8, 0, 0, 0),
+      padding: const EdgeInsets.fromLTRB(16, 6, 16, 6),
+      decoration: ShapeDecoration(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+          side: const BorderSide(
+            width: 1,
+            color: Colors.grey,
+            style: BorderStyle.solid,
+          ),
+        ),
+      ),
+      child: Column(children: [
+        Text(
+          'adaptive sample item name',
+          style: TextStyle(fontSize: pixelRatio),
+        ),
+        Text(
+          'adaptive sample user name',
+          style: TextStyle(fontSize: adaptiveWidth),
+        ),
+      ]),
+    ),
+  );
+}
+
+// match parent
+Widget _matchParentSampleItem() {
+  return Container(
+    // 沒定義寬高的話, 跟著內容變動
+    // width: ,
+    // height: ,
+    margin: const EdgeInsets.fromLTRB(8, 0, 0, 0),
+    padding: const EdgeInsets.fromLTRB(16, 6, 16, 6),
+    decoration: ShapeDecoration(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
+        side: const BorderSide(
+          width: 1,
+          color: Colors.grey,
+          style: BorderStyle.solid,
+        ),
+      ),
+    ),
+    child: const Column(children: [
+      Text(
+        'match parent sample item name',
+      ),
+      Text(
+        'match parent sample user name',
+      ),
+    ]),
   );
 }
