@@ -2,6 +2,8 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:googleapis/youtube/v3.dart';
+import 'package:hello_mdfk/src/adaptive_image.dart';
+import 'package:hello_mdfk/src/adaptive_text.dart';
 import 'package:hello_mdfk/state/yt_play_list_state.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/link.dart';
@@ -74,7 +76,8 @@ class _PlaylistDetailsListViewState extends State<_PlaylistDetailsListView> {
               alignment: Alignment.center,
               children: [
                 if (playlistItem.snippet!.thumbnails!.high != null)
-                  Image.network(playlistItem.snippet!.thumbnails!.high!.url!),
+                  AdaptiveImage.network(
+                      playlistItem.snippet!.thumbnails!.high!.url!),
                 _buildGradient(context),
                 _buildTitleAndSubtitle(context, playlistItem),
                 _buildPlayButton(context, playlistItem),
@@ -111,7 +114,7 @@ class _PlaylistDetailsListViewState extends State<_PlaylistDetailsListView> {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
+          AdaptiveText(
             playlistItem.snippet!.title!,
             style: Theme.of(context).textTheme.bodyText1!.copyWith(
                   fontSize: 18,
@@ -119,7 +122,7 @@ class _PlaylistDetailsListViewState extends State<_PlaylistDetailsListView> {
                 ),
           ),
           if (playlistItem.snippet!.videoOwnerChannelTitle != null)
-            Text(
+            AdaptiveText(
               playlistItem.snippet!.videoOwnerChannelTitle!,
               style: Theme.of(context).textTheme.bodyText2!.copyWith(
                     fontSize: 12,

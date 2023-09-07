@@ -6,6 +6,7 @@ import 'package:split_view/split_view.dart';
 
 import 'playlists.dart';
 
+// official sample https://codelabs.developers.google.com/codelabs/flutter-adaptive-app?hl=zh-cn#3
 class AdaptivePlaylists extends StatelessWidget {
   const AdaptivePlaylists({super.key});
 
@@ -13,7 +14,7 @@ class AdaptivePlaylists extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     final targetPlatform = Theme.of(context).platform;
-
+    // 判斷平台
     if (targetPlatform == TargetPlatform.android ||
         targetPlatform == TargetPlatform.iOS ||
         screenWidth <= 600) {
@@ -60,6 +61,7 @@ class _WideDisplayPlaylistsState extends State<WideDisplayPlaylists> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        // 動態調整 AppBar 顯示字串
         title: selectedPlaylist == null
             ? const Text('FlutterDev Playlists')
             : Text('FlutterDev Playlist: ${selectedPlaylist!.snippet!.title!}'),
