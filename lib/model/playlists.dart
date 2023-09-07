@@ -4,6 +4,7 @@ import 'package:hello_mdfk/src/adaptive_image.dart';
 import 'package:hello_mdfk/state/yt_play_list_state.dart';
 import 'package:provider/provider.dart';
 
+// 播放清單列表
 class Playlists extends StatelessWidget {
   const Playlists({super.key, required this.playlistSelected});
   final PlaylistsListSelected playlistSelected;
@@ -28,6 +29,7 @@ class Playlists extends StatelessWidget {
   }
 }
 
+// typedef 函數別名 (Function-alias)
 typedef PlaylistsListSelected = void Function(Playlist playlist);
 
 class _PlaylistsListView extends StatefulWidget {
