@@ -4,7 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 // https://codelabs.developers.google.com/codelabs/flutter-adaptive-app?hl=zh-cn#3
-
+// 顯示裝置內容 page
 class AdaptivePage extends StatelessWidget {
   const AdaptivePage({super.key});
 
