@@ -4,6 +4,7 @@ import 'package:hello_mdfk/colors.dart';
 import 'package:hello_mdfk/model/playlists.dart';
 import 'package:hello_mdfk/page/homepagepage.dart';
 import 'package:hello_mdfk/page/playlist_details.dart';
+import 'package:hello_mdfk/qpp_sample/sample_app.dart';
 import 'package:hello_mdfk/state/darkmodeprovider.dart';
 import 'package:hello_mdfk/state/yt_play_list_state.dart';
 import 'package:hello_mdfk/supplemental/cut_corners_border.dart';
@@ -18,7 +19,7 @@ const flutterDevAccountId = 'UCwXdFgeE9KYzlDdR7TG9cMw';
 const youTubeApiKey = 'AIzaSyCH4gbwsktwSpJrESqNMGDnk7MOymMKY88';
 
 void main() {
-  runApp(const MyApp());
+  runApp(SampleApp());
 }
 
 Map<String, Color> themeColorMap = {
