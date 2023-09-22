@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 // 參考來源
 // https://cloud.tencent.com/developer/article/1942482 Flutter | 滚动组件，ListView，GridVIew等
 // https://blog.wangruofeng007.com/posts/c5552f91/    Flutter ShapeBorder 使用手册
@@ -12,7 +13,10 @@ class BorderSamplePage extends StatelessWidget {
     return Column(
       children: [
         AppBar(
+          excludeHeaderSemantics: true,
           title: const Text('Border Sample'),
+          backgroundColor: Colors.transparent,
+          elevation: 0.0,
         ),
         // ListView 外面要包一個 Expanded, 否則不知道 ListView 高度會不顯示
         Expanded(

@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_portal/flutter_portal.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hello_mdfk/colors.dart';
-import 'package:hello_mdfk/model/playlists.dart';
+
 import 'package:hello_mdfk/page/homepagepage.dart';
 import 'package:hello_mdfk/page/playlist_details.dart';
+import 'package:hello_mdfk/qpp_sample/page/commodity_info_page.dart';
 import 'package:hello_mdfk/qpp_sample/sample_app.dart';
 import 'package:hello_mdfk/state/darkmodeprovider.dart';
 import 'package:hello_mdfk/state/yt_play_list_state.dart';
 import 'package:hello_mdfk/supplemental/cut_corners_border.dart';
-import 'package:provider/provider.dart';
+import 'package:provider/provider.dart' as pv;
 import 'state/appthemestate.dart';
 import 'state/myappstate.dart';
 
@@ -19,7 +22,7 @@ const flutterDevAccountId = 'UCwXdFgeE9KYzlDdR7TG9cMw';
 const youTubeApiKey = 'AIzaSyCH4gbwsktwSpJrESqNMGDnk7MOymMKY88';
 
 void main() {
-  runApp(SampleApp());
+  runApp(const ProviderScope(child: Portal(child: MyApp())));
 }
 
 Map<String, Color> themeColorMap = {
@@ -47,19 +50,19 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
+    return pv.MultiProvider(
         providers: [
-          ChangeNotifierProvider(create: (_) => DarkModeProvider()),
-          ChangeNotifierProvider(create: (_) => ThemeState()),
-          ChangeNotifierProvider(create: (_) => MyAppState()),
-          ChangeNotifierProvider(
+          pv.ChangeNotifierProvider(create: (_) => DarkModeProvider()),
+          pv.ChangeNotifierProvider(create: (_) => ThemeState()),
+          pv.ChangeNotifierProvider(create: (_) => MyAppState()),
+          pv.ChangeNotifierProvider(
               create: (_) => FlutterDevPlaylists(
                   flutterDevAccountId: flutterDevAccountId,
                   youTubeApiKey: youTubeApiKey)),
         ],
-        child: Consumer<DarkModeProvider>(
+        child: pv.Consumer<DarkModeProvider>(
           builder: (_, darkmodeprovider, child) {
-            return Consumer<ThemeState>(
+            return pv.Consumer<ThemeState>(
               builder: (context, themestate, child) {
                 return MaterialApp.router(
                   title: 'Namer App',
@@ -87,7 +90,8 @@ final router = GoRouter(
     GoRoute(
       path: '/',
       builder: (context, state) {
-        return const MyHomePage();
+        // return const MyHomePage();
+        return const CommodityInfoPage(123);
       },
       routes: <RouteBase>[
         GoRoute(

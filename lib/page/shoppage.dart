@@ -102,11 +102,18 @@ class ShopPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // 是否延伸body至底部
+      extendBody: true,
+      // 是否延伸body至顶部
+      extendBodyBehindAppBar: true,
       // 基本的上方 bar
       appBar: AppBar(
         // 修改 title text style 為預設的 head line large
         titleTextStyle: Theme.of(context).textTheme.headlineLarge,
-        backgroundColor: Theme.of(context).colorScheme.tertiaryContainer,
+        backgroundColor:
+            Theme.of(context).colorScheme.tertiaryContainer.withOpacity(0.5),
+        elevation: 0.0,
+        automaticallyImplyLeading: false,
         title: const Text('Shop Now!'),
         // 是否置中, 若不設定, 每個平台預設值不同
         centerTitle: true,
@@ -151,7 +158,7 @@ class ShopPage extends StatelessWidget {
           // crossAxisCount: 指定横向显示项数
           crossAxisCount: 2,
           // 字段为 GridView 的 4 邊设置内边距
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.fromLTRB(16, 72, 16, 16),
           // 字段会根据宽高比（宽度与高度的比）确定项目的大小
           childAspectRatio: 8.0 / 9.0,
           children: _buildGridCards(context)
