@@ -33,6 +33,29 @@ extension CountryExtension on QppCountry {
     }
   }
 
+  int get index {
+    switch (this) {
+      case QppCountry.traditionalChinese:
+        return 0;
+      case QppCountry.simplifiedChinese:
+        return 1;
+      case QppCountry.english:
+        return 2;
+      case QppCountry.japanese:
+        return 3;
+      case QppCountry.korean:
+        return 4;
+      case QppCountry.vietnam:
+        return 5;
+      case QppCountry.thailand:
+        return 6;
+      case QppCountry.indonesia:
+        return 7;
+      default:
+        return -1;
+    }
+  }
+
   int get size {
     return 8;
   }

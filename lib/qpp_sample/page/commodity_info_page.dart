@@ -11,56 +11,41 @@ class CommodityInfoPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Expanded(
-      child: Scaffold(
-        // 是否延伸body至底部
-        extendBody: true,
-        // 是否延伸body至顶部
-        extendBodyBehindAppBar: true,
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-          backgroundColor: const Color(0x800f1f63).withOpacity(0.5),
-          toolbarHeight: 100,
-          elevation: 0,
-          title: _largeAppBar(),
-        ),
-        body: const Placeholder(),
+    return Scaffold(
+      // 是否延伸body至底部
+      extendBody: true,
+      // 是否延伸body至顶部
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        backgroundColor: const Color(0x800f1f63).withOpacity(0.5),
+        toolbarHeight: 100,
+        elevation: 0,
+        title: _largeAppBar(),
       ),
+      body: const Placeholder(),
     );
   }
 }
 
 Widget _largeAppBar() {
   // Stack 重疊元件
-  return Stack(
-    // 對齊位置
-    alignment: const Alignment(0, 0),
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.start,
+    crossAxisAlignment: CrossAxisAlignment.center,
     children: [
-      Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          // 左邊的圖片
-          IconButton(
-            iconSize: 160,
-            icon: Image.network(
-              'https://qpptec.com/img/logo.png',
-              fit: BoxFit.fill,
-            ),
-            onPressed: () => {},
-          ),
-          // 擠右邊的東西用
-          const Expanded(child: Text('')),
-          _ExtendCountryBox(),
-        ],
+      // 左邊的圖片
+      IconButton(
+        iconSize: 160,
+        icon: Image.network(
+          'https://qpptec.com/img/logo.png',
+          fit: BoxFit.fill,
+        ),
+        onPressed: () => {},
       ),
-      const Expanded(
-        child: Center(
-            child: Text(
-          '',
-          style: TextStyle(fontSize: 45),
-        )),
-      )
+      // 擠右邊的東西用
+      const Expanded(child: Text('')),
+      _ExtendCountryBox(),
     ],
   );
 }
