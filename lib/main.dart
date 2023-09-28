@@ -66,14 +66,14 @@ class MyApp extends StatelessWidget {
               builder: (context, themestate, child) {
                 return MaterialApp.router(
                   title: 'Namer App',
-                  theme: switch (darkmodeprovider.darkMode) {
-                    // case 1
-                    1 => _darkModeTheme(),
-                    // default
-                    _ => _selectColorTheme(themestate.themeColor),
-                  },
-                  darkTheme:
-                      darkmodeprovider.darkMode == 2 ? _darkModeTheme() : null,
+                  // theme: switch (darkmodeprovider.darkMode) {
+                  //   // case 1
+                  //   1 => _darkModeTheme(),
+                  //   // default
+                  //   _ => _selectColorTheme(themestate.themeColor),
+                  // },
+                  // darkTheme:
+                  //     darkmodeprovider.darkMode == 2 ? _darkModeTheme() : null,
                   debugShowCheckedModeBanner: false,
                   // home: const MyHomePage(),
                   routerConfig: router,

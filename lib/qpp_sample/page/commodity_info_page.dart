@@ -50,84 +50,73 @@ Widget _largeAppBar() {
   );
 }
 
-// List<PopupMenuItem> _buttonItems() {
-// return [
-//   PopupMenuItem(
-//     child: Text(QppCountry.traditionalChinese.buttonTitle),
-//     onTap: () => onCountryClick(0),
-//   ),
-//   PopupMenuItem(
-//       value: 1, child: Text(QppCountry.simplifiedChinese.buttonTitle)),
-//   PopupMenuItem(value: 2, child: Text(QppCountry.english.buttonTitle)),
-//   PopupMenuItem(value: 3, child: Text(QppCountry.japanese.buttonTitle)),
-//   PopupMenuItem(value: 4, child: Text(QppCountry.korean.buttonTitle)),
-//   PopupMenuItem(value: 5, child: Text(QppCountry.vietnam.buttonTitle)),
-//   PopupMenuItem(value: 6, child: Text(QppCountry.thailand.buttonTitle)),
-//   PopupMenuItem(value: 7, child: Text(QppCountry.indonesia.buttonTitle)),
-// ];
-// }
-
-List<ListTile> _buttonItems() {
-  return [
-    ListTile(
-      title: Text(QppCountry.traditionalChinese.buttonTitle),
-      onTap: () => onCountryClick(0),
-    ),
-    ListTile(title: Text(QppCountry.simplifiedChinese.buttonTitle)),
-    ListTile(title: Text(QppCountry.english.buttonTitle)),
-    ListTile(title: Text(QppCountry.japanese.buttonTitle)),
-    ListTile(title: Text(QppCountry.korean.buttonTitle)),
-    ListTile(title: Text(QppCountry.vietnam.buttonTitle)),
-    ListTile(title: Text(QppCountry.thailand.buttonTitle)),
-    ListTile(title: Text(QppCountry.indonesia.buttonTitle)),
-  ];
+List<Widget> _buttonItems() {
+  return QppCountry.values
+      .map((country) => Consumer(
+            builder: (BuildContext context, WidgetRef ref, Widget? child) {
+              final LanguageListStateNotifier notifier =
+                  ref.read(languageListProvider.notifier);
+              return ListTile(
+                  title: Text(country.buttonTitle),
+                  onTap: () {
+                    notifier.onClick();
+                    onCountryClick(country.index);
+                  });
+            },
+          ))
+      .toList();
 }
+
+class LanguageListStateNotifier extends StateNotifier<bool> {
+  LanguageListStateNotifier() : super(false);
+
+  void openList() {
+    state = true;
+  }
+
+  void closeList() {
+    state = false;
+  }
+
+  void onClick() {
+    state = !state;
+  }
+}
+
+final languageListProvider =
+    StateNotifierProvider<LanguageListStateNotifier, bool>((ref) {
+  return LanguageListStateNotifier();
+});
 
 void onCountryClick(int value) {
   print('Click Country $value');
 }
 
-StateProvider<bool> onCountryShowProvider = StateProvider((ref) {
-  return false;
-});
-
 class _ExtendCountryBox extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    var onCountryShow = ref.watch(onCountryShowProvider);
+    final LanguageListStateNotifier notifier =
+        ref.read(languageListProvider.notifier);
+
     return MouseRegion(
       onEnter: (PointerEnterEvent event) {
-        ref.read(onCountryShowProvider.notifier).state = true;
+        notifier.openList();
       },
       onExit: (PointerExitEvent event) {
-        ref.read(onCountryShowProvider.notifier).state = false;
+        notifier.closeList();
       },
       child: _ModalEntry(
-        visible: onCountryShow,
-        onClose: () {},
+        visible: ref.watch(languageListProvider),
+        onClose: () {
+          notifier.onClick();
+        },
         popup: _Popup(
           children: _buttonItems(),
-          //  _buttonItems(),
         ),
-        child: Directionality(
-          textDirection: TextDirection.rtl,
-          child: TextButton.icon(
-            onPressed: () {
-              ref.read(onCountryShowProvider.notifier).state = !onCountryShow;
-            },
-            label: const Text(
-              'Languages',
-              style: TextStyle(
-                fontSize: 16,
-                color: Colors.white,
-              ),
-            ),
-            icon: const Icon(
-              Icons.keyboard_arrow_down,
-              size: 35,
-              color: Colors.white,
-            ),
-          ),
+        child: IconButton(
+          icon:
+              Image.asset('assets/mobile-icon-actionbar-language-normal.webp'),
+          onPressed: () {},
         ),
       ),
     );
@@ -149,13 +138,12 @@ class _Popup extends StatelessWidget {
           bottom: 16,
         ),
         child: Consumer(builder: (context, ref, _) {
-          var onCountryShow = ref.watch(onCountryShowProvider);
+          final LanguageListStateNotifier notifier =
+              ref.read(languageListProvider.notifier);
           return MouseRegion(
-              onEnter: (event) =>
-                  ref.read(onCountryShowProvider.notifier).state = true,
-              onExit: (event) =>
-                  ref.read(onCountryShowProvider.notifier).state = false,
-              child: onCountryShow
+              onEnter: (event) => notifier.openList(),
+              onExit: (event) => notifier.closeList(),
+              child: ref.watch(languageListProvider)
                   ? Card(
                       elevation: 8,
                       shape: RoundedRectangleBorder(
@@ -197,9 +185,9 @@ class _ModalEntry extends StatelessWidget {
         portalFollower: popup,
         // todo: implement anchor that sizes the follower based on the available space within the portal at the calculated offset.
         anchor: const Aligned(
-          follower: Alignment.topLeft,
-          target: Alignment.bottomLeft,
-          widthFactor: 1,
+          follower: Alignment.topRight,
+          target: Alignment.bottomRight,
+          widthFactor: 5,
         ),
         child: IgnorePointer(
           ignoring: visible,
