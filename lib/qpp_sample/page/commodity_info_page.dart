@@ -45,6 +45,23 @@ Widget _largeAppBar() {
       ),
       // 擠右邊的東西用
       const Expanded(child: Text('')),
+      TextButton(
+          onPressed: () => {print('onClick 產品介紹')}, child: const Text('產品介紹')),
+      const SizedBox(
+        width: 30,
+      ),
+      TextButton(onPressed: () => {}, child: const Text('產品特色')),
+      const SizedBox(
+        width: 30,
+      ),
+      TextButton(onPressed: () => {}, child: const Text('使用說明')),
+      const SizedBox(
+        width: 30,
+      ),
+      TextButton(onPressed: () => {}, child: const Text('聯繫我們')),
+      const SizedBox(
+        width: 30,
+      ),
       _ExtendCountryBox(),
     ],
   );
