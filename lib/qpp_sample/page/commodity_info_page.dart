@@ -23,13 +23,17 @@ class CommodityInfoPage extends ConsumerWidget {
         elevation: 0,
         title: _largeAppBar(),
       ),
-      body: const Placeholder(),
+      body: Container(
+        decoration: const BoxDecoration(
+            image: DecorationImage(
+                image: NetworkImage('https://imgur.com/YC7kYZk.png'),
+                fit: BoxFit.cover)),
+      ),
     );
   }
 }
 
 Widget _largeAppBar() {
-  // Stack 重疊元件
   return Row(
     mainAxisAlignment: MainAxisAlignment.start,
     crossAxisAlignment: CrossAxisAlignment.center,
@@ -41,7 +45,7 @@ Widget _largeAppBar() {
           'https://qpptec.com/img/logo.png',
           fit: BoxFit.fill,
         ),
-        onPressed: () => {},
+        onPressed: () => {print('Click QPP HomePage')},
       ),
       // 擠右邊的東西用
       const Expanded(child: Text('')),
