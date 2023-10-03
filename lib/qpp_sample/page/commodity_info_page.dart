@@ -46,19 +46,38 @@ Widget _largeAppBar() {
       // 擠右邊的東西用
       const Expanded(child: Text('')),
       TextButton(
-          onPressed: () => {print('onClick 產品介紹')}, child: const Text('產品介紹')),
+          onPressed: () => {print('Click 產品介紹')},
+          child: const Text(
+            '產品介紹',
+            style: TextStyle(fontSize: 16, color: Colors.white),
+          )),
       const SizedBox(
         width: 30,
       ),
-      TextButton(onPressed: () => {}, child: const Text('產品特色')),
+      TextButton(
+          onPressed: () => {print('Click 產品特色')},
+          child: const Text(
+            '產品特色',
+            style: TextStyle(fontSize: 16, color: Colors.white),
+          )),
       const SizedBox(
         width: 30,
       ),
-      TextButton(onPressed: () => {}, child: const Text('使用說明')),
+      TextButton(
+          onPressed: () => {print('Click 使用說明')},
+          child: const Text(
+            '使用說明',
+            style: TextStyle(fontSize: 16, color: Colors.white),
+          )),
       const SizedBox(
         width: 30,
       ),
-      TextButton(onPressed: () => {}, child: const Text('聯繫我們')),
+      TextButton(
+          onPressed: () => {print('Click 聯繫我們')},
+          child: const Text(
+            '聯繫我們',
+            style: TextStyle(fontSize: 16, color: Colors.white),
+          )),
       const SizedBox(
         width: 30,
       ),
@@ -133,7 +152,9 @@ class _ExtendCountryBox extends ConsumerWidget {
         child: IconButton(
           icon:
               Image.asset('assets/mobile-icon-actionbar-language-normal.webp'),
-          onPressed: () {},
+          onPressed: () {
+            notifier.onClick();
+          },
         ),
       ),
     );
