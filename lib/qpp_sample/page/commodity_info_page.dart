@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_portal/flutter_portal.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hello_mdfk/qpp_sample/qpp_country.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 
 class CommodityInfoPage extends ConsumerWidget {
   final int _commodidyId;
@@ -40,7 +41,7 @@ class CommodityInfoPage extends ConsumerWidget {
             // 切子元件超出範圍
             clipBehavior: Clip.hardEdge,
             semanticContainer: false,
-            margin: const EdgeInsets.fromLTRB(80, 60, 80, 50),
+            margin: const EdgeInsets.fromLTRB(80, 60, 80, 40),
             color: const Color.fromARGB(255, 7, 18, 67),
             shape: RoundedRectangleBorder(
               // 圓角參數
@@ -98,11 +99,28 @@ class CommodityInfoPage extends ConsumerWidget {
               )
             ]),
           ),
+          Center(
+            child: Card(
+              margin: const EdgeInsets.only(bottom: 15),
+              // 切子元件超出範圍
+              clipBehavior: Clip.hardEdge,
+              shape: RoundedRectangleBorder(
+                // 圓角參數
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: QrImageView(
+                backgroundColor: Colors.white,
+                data:
+                    'https://qpptec.com/app/commodity_info?commodityID=109555&sharer=SUV5G42V&lang=zh_TW&openExternalBrowser=1&action=stay',
+                size: 150,
+              ),
+            ),
+          ),
           // 下方
           const Padding(
             padding: EdgeInsets.only(bottom: 50),
             child: Text(
-              '這上面要放 QR Code',
+              '掃描條碼從QPP中開啟',
               textAlign: TextAlign.center,
               style: TextStyle(
                   fontSize: 15,
