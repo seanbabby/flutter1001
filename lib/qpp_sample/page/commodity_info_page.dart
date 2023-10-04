@@ -85,15 +85,17 @@ class CommodityInfoPage extends ConsumerWidget {
                 padding: const EdgeInsets.only(bottom: 20),
                 child: Table(
                   columnWidths: const {
-                    0: FixedColumnWidth(200.0),
+                    0: FixedColumnWidth(180.0),
                   },
                   defaultVerticalAlignment: TableCellVerticalAlignment.middle,
                   textBaseline: TextBaseline.alphabetic,
                   children: [
-                    _itemTableRow(property: '123', value: '456'),
-                    _itemTableRow(property: '123456', value: '456'),
-                    _itemTableRow(property: '123', value: '456'),
-                    _itemTableRow(property: '123456899', value: '456'),
+                    _itemCategoryTableRow(property: '類別', value: '456'),
+                    _itemCreatorTableRow(property: '創建者', value: '456'),
+                    _itemDescriptionTableRow(
+                        property: '說明',
+                        value:
+                            'https://storage.googleapis.com/qpp_blockchain/Item/9E56D46E4848CD1BBF82A8ADA053FF68806193A204F47058B2FB87AB0C32288C_109555_Image1.png?v=1683259489078672'),
                   ],
                 ),
               )
@@ -147,7 +149,8 @@ TableRow _itemTableRow({required String property, required String value}) {
           padding: const EdgeInsets.only(left: 60, top: 15, bottom: 15),
           child: Text(
             property,
-            style: const TextStyle(color: Colors.white, fontSize: 20),
+            style: const TextStyle(
+                color: Color.fromARGB(255, 161, 207, 255), fontSize: 20),
           ),
         ),
       ),
@@ -158,6 +161,158 @@ TableRow _itemTableRow({required String property, required String value}) {
           padding: const EdgeInsets.only(top: 15, bottom: 15),
           child: Text(
             value,
+            style: const TextStyle(color: Colors.white, fontSize: 20),
+          ),
+        ),
+      ),
+    ],
+  );
+}
+
+// 類別 item
+TableRow _itemCategoryTableRow(
+    {required String property, required String value}) {
+  return TableRow(
+    children: [
+      // title
+      TableCell(
+        verticalAlignment: TableCellVerticalAlignment.baseline,
+        child: Padding(
+          padding: const EdgeInsets.only(left: 60, top: 15, bottom: 15),
+          child: Text(
+            property,
+            style: const TextStyle(
+                color: Color.fromARGB(255, 161, 207, 255), fontSize: 20),
+          ),
+        ),
+      ),
+      // data
+      TableCell(
+        verticalAlignment: TableCellVerticalAlignment.baseline,
+        child: Row(children: [
+          // 類別 icon
+          Image.asset(
+            'assets/mobile-icon-actionbar-language-normal.webp',
+            width: 20,
+          ),
+
+          const SizedBox(
+            width: 10,
+          ),
+          // 類別
+          Text(
+            value,
+            style: const TextStyle(color: Colors.white, fontSize: 20),
+          ),
+          const SizedBox(
+            width: 10,
+          ),
+          // id
+          Text(
+            value,
+            style: const TextStyle(
+                color: Color.fromARGB(255, 89, 255, 193), fontSize: 20),
+          ),
+        ]),
+      ),
+    ],
+  );
+}
+
+// 創建者 item
+TableRow _itemCreatorTableRow(
+    {required String property, required String value}) {
+  return TableRow(
+    children: [
+      // title
+      TableCell(
+        verticalAlignment: TableCellVerticalAlignment.baseline,
+        child: Padding(
+          padding: const EdgeInsets.only(left: 60, top: 15, bottom: 15),
+          child: Text(
+            property,
+            style: const TextStyle(
+                color: Color.fromARGB(255, 161, 207, 255), fontSize: 20),
+          ),
+        ),
+      ),
+      // data
+      TableCell(
+        verticalAlignment: TableCellVerticalAlignment.baseline,
+        child: GestureDetector(
+          onTap: () {
+            print('Click Item Creator');
+          },
+          child: Padding(
+            padding: const EdgeInsets.only(right: 60),
+            child: Row(children: [
+              // 官方 icon
+              Image.asset(
+                'assets/mobile-icon-actionbar-language-normal.webp',
+                width: 20,
+              ),
+              const SizedBox(
+                width: 10,
+              ),
+              // 創建者 id
+              Text(
+                value,
+                style: const TextStyle(
+                    color: Color.fromARGB(255, 255, 185, 42), fontSize: 20),
+              ),
+              const SizedBox(
+                width: 10,
+              ),
+              // 創建者 name
+              Text(
+                value,
+                style: const TextStyle(
+                    color: Color.fromARGB(255, 255, 185, 42), fontSize: 20),
+              ),
+              const Expanded(
+                  child: Text(
+                '',
+              )),
+              const Icon(
+                Icons.keyboard_arrow_right,
+                color: Colors.white,
+                size: 30,
+              ),
+            ]),
+          ),
+        ),
+      ),
+    ],
+  );
+}
+
+// 說明 item
+TableRow _itemDescriptionTableRow(
+    {required String property, required String value}) {
+  return TableRow(
+    // title
+    children: [
+      TableCell(
+        verticalAlignment: TableCellVerticalAlignment.baseline,
+        child: Padding(
+          padding: const EdgeInsets.only(left: 60, top: 15, bottom: 15),
+          child: Text(
+            property,
+            style: const TextStyle(
+                color: Color.fromARGB(255, 161, 207, 255), fontSize: 20),
+          ),
+        ),
+      ),
+      // data
+      TableCell(
+        verticalAlignment: TableCellVerticalAlignment.baseline,
+        // 說明
+        child: Padding(
+          padding: const EdgeInsets.only(right: 60),
+          child: Text(
+            value,
+            textDirection: TextDirection.ltr,
+            softWrap: true,
             style: const TextStyle(color: Colors.white, fontSize: 20),
           ),
         ),
