@@ -42,7 +42,7 @@ class CommodityInfoPage extends ConsumerWidget {
             clipBehavior: Clip.hardEdge,
             semanticContainer: false,
             margin: const EdgeInsets.fromLTRB(80, 60, 80, 40),
-            color: const Color.fromARGB(255, 7, 18, 67),
+            color: const Color.fromARGB(255, 30, 40, 82),
             shape: RoundedRectangleBorder(
               // 圓角參數
               borderRadius: BorderRadius.circular(8),
@@ -99,6 +99,7 @@ class CommodityInfoPage extends ConsumerWidget {
               )
             ]),
           ),
+          // QR Code
           Center(
             child: Card(
               margin: const EdgeInsets.only(bottom: 15),
