@@ -32,7 +32,7 @@ class CommodityInfoPage extends ConsumerWidget {
         // body 容器 bg
         decoration: const BoxDecoration(
             image: DecorationImage(
-                image: NetworkImage('https://imgur.com/YC7kYZk.png'),
+                image: NetworkImage('https://i.imgur.com/YC7kYZk.png'),
                 // https://imgur.com/YC7kYZk.png
                 fit: BoxFit.cover)),
         child: ListView(children: [
