@@ -40,7 +40,7 @@ class CommodityInfoPage extends ConsumerWidget {
             // 切子元件超出範圍
             clipBehavior: Clip.hardEdge,
             semanticContainer: false,
-            margin: const EdgeInsets.fromLTRB(50, 50, 50, 400),
+            margin: const EdgeInsets.fromLTRB(50, 50, 50, 50),
             color: const Color.fromARGB(255, 7, 18, 67),
             shape: RoundedRectangleBorder(
               // 圓角參數
@@ -48,46 +48,57 @@ class CommodityInfoPage extends ConsumerWidget {
             ),
             // Card 陰影
             elevation: 0,
-            child: Column(
-              children: [
-                Container(
-                  color: Colors.red,
-                  alignment: Alignment.center,
-                  child: Column(children: [
-                    // 資料區 上半部
-                    Container(
-                      padding: const EdgeInsets.only(top: 80, bottom: 30),
-                      width: double.infinity,
-                      // 上半部 bg
-                      decoration: const BoxDecoration(
-                          image: DecorationImage(
-                              image: NetworkImage(
-                                  'https://qpptec.com/img/defaultBg.png'),
-                              fit: BoxFit.cover)),
-                      child: Column(children: [
-                        // 物品 icon
-                        ClipOval(
-                          child: Image.network(
-                            'https://storage.googleapis.com/qpp_blockchain/Item/9E56D46E4848CD1BBF82A8ADA053FF68806193A204F47058B2FB87AB0C32288C_109555_Image1.png?v=1683259489078672',
-                            width: 100,
-                            filterQuality: FilterQuality.high,
-                            fit: BoxFit.fitWidth,
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 45,
-                        ),
-                        // 物品名稱
-                        const Text(
-                          'item item item',
-                          style: TextStyle(fontSize: 30, color: Colors.white),
-                        ),
-                      ]),
-                    )
-                  ]),
-                ),
-              ],
-            ),
+            child:
+                //  Column(
+                //   children: [
+                //     Container(
+                //       color: Colors.red,
+                //       alignment: Alignment.center,
+                //       child:
+                Column(children: [
+              // 資料區 上半部
+              Container(
+                padding: const EdgeInsets.only(top: 80, bottom: 30),
+                width: double.infinity,
+                // 上半部 bg
+                decoration: const BoxDecoration(
+                    image: DecorationImage(
+                        image: NetworkImage(
+                            'https://qpptec.com/img/defaultBg.png'),
+                        fit: BoxFit.cover)),
+                child: Column(children: [
+                  // 物品 icon
+                  ClipOval(
+                    child: Image.network(
+                      'https://storage.googleapis.com/qpp_blockchain/Item/9E56D46E4848CD1BBF82A8ADA053FF68806193A204F47058B2FB87AB0C32288C_109555_Image1.png?v=1683259489078672',
+                      width: 100,
+                      filterQuality: FilterQuality.high,
+                      fit: BoxFit.fitWidth,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 45,
+                  ),
+                  // 物品名稱
+                  const Text(
+                    'item item item',
+                    style: TextStyle(fontSize: 30, color: Colors.white),
+                  ),
+                ]),
+              )
+            ]),
+            //     ),
+            //   ],
+            // ),
+          ),
+          // 下方
+          const Text(
+            '這上面要放 QR Code',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                fontSize: 15,
+                color: Colors.yellow,
+                fontWeight: FontWeight.w500),
           ),
         ]),
       ),
