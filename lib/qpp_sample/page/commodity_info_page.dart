@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_portal/flutter_portal.dart';
@@ -12,22 +14,128 @@ class CommodityInfoPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
+      backgroundColor: const Color.fromARGB(128, 15, 31, 99),
       // 是否延伸body至底部
       extendBody: true,
       // 是否延伸body至顶部
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: const Color(0x800f1f63).withOpacity(0.5),
+        backgroundColor: const Color.fromARGB(128, 9, 17, 54).withOpacity(0.6),
         toolbarHeight: 100,
         elevation: 0,
         title: _largeAppBar(),
       ),
+      //使用 container 做 body 容器
       body: Container(
+        // body 容器 bg
         decoration: const BoxDecoration(
             image: DecorationImage(
                 image: NetworkImage('https://imgur.com/YC7kYZk.png'),
+                // https://imgur.com/YC7kYZk.png
                 fit: BoxFit.cover)),
+        child: ListView(children: [
+          // 上方資料卡片容器
+          Card(
+            // 切子元件超出範圍
+            clipBehavior: Clip.hardEdge,
+            semanticContainer: false,
+            margin: const EdgeInsets.fromLTRB(50, 120, 50, 400),
+            color: const Color.fromARGB(255, 7, 18, 67),
+            shape: RoundedRectangleBorder(
+              // 圓角參數
+              borderRadius: BorderRadius.circular(8),
+            ),
+            // Card 陰影
+            elevation: 0,
+            child: Column(
+              children: [
+                Container(
+                  color: Colors.red,
+                  alignment: Alignment.center,
+                  child: Column(children: [
+                    // 資料區 上半部
+                    Container(
+                      // 上半部 bg
+                      decoration: const BoxDecoration(
+                          image: DecorationImage(
+                              image: NetworkImage(
+                                  'https://qpptec.com/img/defaultBg.png'),
+                              // https://qpptec.com/img/defaultBg.png
+                              fit: BoxFit.none)),
+                      child: Column(children: [
+                        // 物品 icon
+                        ClipOval(
+                          child: Image.network(
+                            'https://storage.googleapis.com/qpp_blockchain/Item/9E56D46E4848CD1BBF82A8ADA053FF68806193A204F47058B2FB87AB0C32288C_109555_Image1.png?v=1683259489078672',
+                            width: 100,
+                            fit: BoxFit.fitWidth,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        // 物品名稱
+                        const Text(
+                          'item item item',
+                          style: TextStyle(fontSize: 30, color: Colors.white),
+                        ),
+                      ]),
+                    )
+                  ]),
+                ),
+              ],
+            ),
+          ),
+        ]),
+
+        // Center(
+        //     heightFactor: double.infinity,
+        //     widthFactor: double.infinity,
+        //     // 四周有圓角的容器
+        //     child: Card(
+        //       semanticContainer: false,
+        //       margin: const EdgeInsets.fromLTRB(50, 120, 50, 400),
+        //       color: const Color.fromARGB(255, 7, 18, 67),
+        //       shape: RoundedRectangleBorder(
+        //         // 圓角參數
+        //         borderRadius: BorderRadius.circular(8),
+        //       ),
+        //       // Card 陰影
+        //       elevation: 0,
+        //       child: Column(
+        //         children: [
+        //           Container(
+        //             decoration: const BoxDecoration(
+        //                 image: DecorationImage(
+        //                     image: NetworkImage(
+        //                         'https://qpptec.com/img/defaultBg.png'),
+        //                     // https://qpptec.com/img/defaultBg.png
+        //                     fit: BoxFit.fitWidth)),
+        //             child: Padding(
+        //               padding: const EdgeInsets.only(
+        //                   top: 0, bottom: 120, left: 500, right: 500),
+        //               child: Column(children: [
+        //                 ClipOval(
+        //                   child: Image.network(
+        //                     'https://storage.googleapis.com/qpp_blockchain/Item/9E56D46E4848CD1BBF82A8ADA053FF68806193A204F47058B2FB87AB0C32288C_109555_Image1.png?v=1683259489078672',
+        //                     width: 100,
+        //                     fit: BoxFit.fitWidth,
+        //                   ),
+        //                 ),
+        //                 const SizedBox(
+        //                   height: 20,
+        //                 ),
+        //                 const Text(
+        //                   'item item item',
+        //                   style: TextStyle(fontSize: 30, color: Colors.white),
+        //                 ),
+        //               ]),
+        //             ),
+        //           )
+        //         ],
+        //       ),
+        //     )),
       ),
     );
   }
@@ -53,7 +161,8 @@ Widget _largeAppBar() {
           onPressed: () => {print('Click 產品介紹')},
           child: const Text(
             '產品介紹',
-            style: TextStyle(fontSize: 16, color: Colors.white),
+            style: TextStyle(
+                fontSize: 16, color: Colors.white, fontWeight: FontWeight.w500),
           )),
       const SizedBox(
         width: 30,
@@ -62,7 +171,8 @@ Widget _largeAppBar() {
           onPressed: () => {print('Click 產品特色')},
           child: const Text(
             '產品特色',
-            style: TextStyle(fontSize: 16, color: Colors.white),
+            style: TextStyle(
+                fontSize: 16, color: Colors.white, fontWeight: FontWeight.w500),
           )),
       const SizedBox(
         width: 30,
@@ -71,7 +181,8 @@ Widget _largeAppBar() {
           onPressed: () => {print('Click 使用說明')},
           child: const Text(
             '使用說明',
-            style: TextStyle(fontSize: 16, color: Colors.white),
+            style: TextStyle(
+                fontSize: 16, color: Colors.white, fontWeight: FontWeight.w500),
           )),
       const SizedBox(
         width: 30,
@@ -80,7 +191,8 @@ Widget _largeAppBar() {
           onPressed: () => {print('Click 聯繫我們')},
           child: const Text(
             '聯繫我們',
-            style: TextStyle(fontSize: 16, color: Colors.white),
+            style: TextStyle(
+                fontSize: 16, color: Colors.white, fontWeight: FontWeight.w500),
           )),
       const SizedBox(
         width: 30,
@@ -97,7 +209,10 @@ List<Widget> _buttonItems() {
               final LanguageListStateNotifier notifier =
                   ref.read(languageListProvider.notifier);
               return ListTile(
-                  title: Text(country.buttonTitle),
+                  title: Text(
+                    country.buttonTitle,
+                    style: const TextStyle(color: Colors.white, fontSize: 13),
+                  ),
                   onTap: () {
                     notifier.onClick();
                     onCountryClick(country.index);
@@ -177,7 +292,7 @@ class _Popup extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
         padding: const EdgeInsets.only(
-          bottom: 16,
+          bottom: 0,
         ),
         child: Consumer(builder: (context, ref, _) {
           final LanguageListStateNotifier notifier =
@@ -187,7 +302,9 @@ class _Popup extends StatelessWidget {
               onExit: (event) => notifier.closeList(),
               child: ref.watch(languageListProvider)
                   ? Card(
-                      elevation: 8,
+                      color:
+                          const Color.fromARGB(128, 9, 17, 54).withOpacity(0.6),
+                      elevation: 0,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8),
                       ),
@@ -229,7 +346,7 @@ class _ModalEntry extends StatelessWidget {
         anchor: const Aligned(
           follower: Alignment.topRight,
           target: Alignment.bottomRight,
-          widthFactor: 5,
+          widthFactor: 4,
         ),
         child: IgnorePointer(
           ignoring: visible,

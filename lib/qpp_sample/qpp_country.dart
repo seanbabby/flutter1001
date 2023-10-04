@@ -59,25 +59,4 @@ extension CountryExtension on QppCountry {
   int get size {
     return 8;
   }
-
-  // int get value {
-  //   switch (this) {
-  //     case BlueShade.blue100:
-  //       return 100;
-  //     case BlueShade.blue200:
-  //       return 200;
-  //     case BlueShade.blue300:
-  //       return 300;
-  //     case BlueShade.blue400:
-  //       return 400;
-  //     case BlueShade.blue500:
-  //       return 500;
-  //     case BlueShade.blue600:
-  //       return 600;
-  //     case BlueShade.blue700:
-  //       return 700;
-  //     default:
-  //       return 500;
-  //   }
-  // }
 }
