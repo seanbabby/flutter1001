@@ -40,7 +40,7 @@ class CommodityInfoPage extends ConsumerWidget {
             // 切子元件超出範圍
             clipBehavior: Clip.hardEdge,
             semanticContainer: false,
-            margin: const EdgeInsets.fromLTRB(50, 50, 50, 50),
+            margin: const EdgeInsets.fromLTRB(80, 60, 80, 50),
             color: const Color.fromARGB(255, 7, 18, 67),
             shape: RoundedRectangleBorder(
               // 圓角參數
@@ -48,16 +48,10 @@ class CommodityInfoPage extends ConsumerWidget {
             ),
             // Card 陰影
             elevation: 0,
-            child:
-                //  Column(
-                //   children: [
-                //     Container(
-                //       color: Colors.red,
-                //       alignment: Alignment.center,
-                //       child:
-                Column(children: [
+            child: Column(children: [
               // 資料區 上半部
               Container(
+                margin: const EdgeInsets.only(bottom: 20),
                 padding: const EdgeInsets.only(top: 80, bottom: 30),
                 width: double.infinity,
                 // 上半部 bg
@@ -85,25 +79,72 @@ class CommodityInfoPage extends ConsumerWidget {
                     style: TextStyle(fontSize: 30, color: Colors.white),
                   ),
                 ]),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 20),
+                child: Table(
+                  columnWidths: const {
+                    0: FixedColumnWidth(200.0),
+                  },
+                  defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+                  textBaseline: TextBaseline.alphabetic,
+                  children: [
+                    _itemTableRow(property: '123', value: '456'),
+                    _itemTableRow(property: '123456', value: '456'),
+                    _itemTableRow(property: '123', value: '456'),
+                    _itemTableRow(property: '123456899', value: '456'),
+                  ],
+                ),
               )
             ]),
-            //     ),
-            //   ],
-            // ),
           ),
           // 下方
-          const Text(
-            '這上面要放 QR Code',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-                fontSize: 15,
-                color: Colors.yellow,
-                fontWeight: FontWeight.w500),
+          const Padding(
+            padding: EdgeInsets.only(bottom: 50),
+            child: Text(
+              '這上面要放 QR Code',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  fontSize: 15,
+                  color: Colors.yellow,
+                  fontWeight: FontWeight.w500),
+            ),
           ),
         ]),
       ),
     );
   }
+}
+
+TableRow _itemTableRow({required String property, required String value}) {
+  return TableRow(
+    children: [
+      // title
+      TableCell(
+        // TableCellVerticalAlignment 表格组件
+        // https://zhuanlan.zhihu.com/p/587061207
+        verticalAlignment: TableCellVerticalAlignment.baseline,
+        child: Padding(
+          padding: const EdgeInsets.only(left: 60, top: 15, bottom: 15),
+          child: Text(
+            property,
+            style: const TextStyle(color: Colors.white, fontSize: 20),
+          ),
+        ),
+      ),
+      // data
+      TableCell(
+        verticalAlignment: TableCellVerticalAlignment.baseline,
+        child: Padding(
+          padding: const EdgeInsets.only(top: 15, bottom: 15),
+          child: Text(
+            value,
+            style: const TextStyle(color: Colors.white, fontSize: 20),
+          ),
+        ),
+      ),
+    ],
+  );
 }
 
 Widget _largeAppBar() {
