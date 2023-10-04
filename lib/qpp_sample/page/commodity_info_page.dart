@@ -40,7 +40,7 @@ class CommodityInfoPage extends ConsumerWidget {
             // 切子元件超出範圍
             clipBehavior: Clip.hardEdge,
             semanticContainer: false,
-            margin: const EdgeInsets.fromLTRB(50, 120, 50, 400),
+            margin: const EdgeInsets.fromLTRB(50, 50, 50, 400),
             color: const Color.fromARGB(255, 7, 18, 67),
             shape: RoundedRectangleBorder(
               // 圓角參數
@@ -56,24 +56,26 @@ class CommodityInfoPage extends ConsumerWidget {
                   child: Column(children: [
                     // 資料區 上半部
                     Container(
+                      padding: const EdgeInsets.only(top: 80, bottom: 30),
+                      width: double.infinity,
                       // 上半部 bg
                       decoration: const BoxDecoration(
                           image: DecorationImage(
                               image: NetworkImage(
                                   'https://qpptec.com/img/defaultBg.png'),
-                              // https://qpptec.com/img/defaultBg.png
-                              fit: BoxFit.none)),
+                              fit: BoxFit.cover)),
                       child: Column(children: [
                         // 物品 icon
                         ClipOval(
                           child: Image.network(
                             'https://storage.googleapis.com/qpp_blockchain/Item/9E56D46E4848CD1BBF82A8ADA053FF68806193A204F47058B2FB87AB0C32288C_109555_Image1.png?v=1683259489078672',
                             width: 100,
+                            filterQuality: FilterQuality.high,
                             fit: BoxFit.fitWidth,
                           ),
                         ),
                         const SizedBox(
-                          height: 20,
+                          height: 45,
                         ),
                         // 物品名稱
                         const Text(
@@ -88,54 +90,6 @@ class CommodityInfoPage extends ConsumerWidget {
             ),
           ),
         ]),
-
-        // Center(
-        //     heightFactor: double.infinity,
-        //     widthFactor: double.infinity,
-        //     // 四周有圓角的容器
-        //     child: Card(
-        //       semanticContainer: false,
-        //       margin: const EdgeInsets.fromLTRB(50, 120, 50, 400),
-        //       color: const Color.fromARGB(255, 7, 18, 67),
-        //       shape: RoundedRectangleBorder(
-        //         // 圓角參數
-        //         borderRadius: BorderRadius.circular(8),
-        //       ),
-        //       // Card 陰影
-        //       elevation: 0,
-        //       child: Column(
-        //         children: [
-        //           Container(
-        //             decoration: const BoxDecoration(
-        //                 image: DecorationImage(
-        //                     image: NetworkImage(
-        //                         'https://qpptec.com/img/defaultBg.png'),
-        //                     // https://qpptec.com/img/defaultBg.png
-        //                     fit: BoxFit.fitWidth)),
-        //             child: Padding(
-        //               padding: const EdgeInsets.only(
-        //                   top: 0, bottom: 120, left: 500, right: 500),
-        //               child: Column(children: [
-        //                 ClipOval(
-        //                   child: Image.network(
-        //                     'https://storage.googleapis.com/qpp_blockchain/Item/9E56D46E4848CD1BBF82A8ADA053FF68806193A204F47058B2FB87AB0C32288C_109555_Image1.png?v=1683259489078672',
-        //                     width: 100,
-        //                     fit: BoxFit.fitWidth,
-        //                   ),
-        //                 ),
-        //                 const SizedBox(
-        //                   height: 20,
-        //                 ),
-        //                 const Text(
-        //                   'item item item',
-        //                   style: TextStyle(fontSize: 30, color: Colors.white),
-        //                 ),
-        //               ]),
-        //             ),
-        //           )
-        //         ],
-        //       ),
-        //     )),
       ),
     );
   }
@@ -151,6 +105,7 @@ Widget _largeAppBar() {
         iconSize: 160,
         icon: Image.network(
           'https://qpptec.com/img/logo.png',
+          filterQuality: FilterQuality.high,
           fit: BoxFit.fill,
         ),
         onPressed: () => {print('Click QPP HomePage')},
