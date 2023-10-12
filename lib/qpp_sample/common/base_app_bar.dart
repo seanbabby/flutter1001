@@ -9,6 +9,7 @@ class BaseAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // TODO: 增加行動裝置尺寸
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.center,

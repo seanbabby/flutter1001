@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hello_mdfk/qpp_sample/common/base_app_bar.dart';
+import 'package:hello_mdfk/qpp_sample/common/qpp_color.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 class CommodityInfoPage extends ConsumerWidget {
@@ -12,14 +13,14 @@ class CommodityInfoPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(128, 15, 31, 99),
+      backgroundColor: QppColor.yaleBlue.color,
       // 是否延伸body至底部
       extendBody: true,
       // 是否延伸body至顶部
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: const Color.fromARGB(128, 9, 17, 54).withOpacity(0.6),
+        backgroundColor: QppColor.onyx60.color,
         toolbarHeight: 100,
         elevation: 0,
         title: const BaseAppBar(),
@@ -38,7 +39,7 @@ class CommodityInfoPage extends ConsumerWidget {
             clipBehavior: Clip.hardEdge,
             semanticContainer: false,
             margin: const EdgeInsets.fromLTRB(80, 60, 80, 40),
-            color: const Color.fromARGB(255, 30, 40, 82),
+            color: QppColor.onyx80.color,
             shape: RoundedRectangleBorder(
               // 圓角參數
               borderRadius: BorderRadius.circular(8),
