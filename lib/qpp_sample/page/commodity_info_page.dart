@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:hello_mdfk/qpp_sample/common/base_app_bar.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
@@ -28,7 +29,7 @@ class CommodityInfoPage extends ConsumerWidget {
         // body 容器 bg
         decoration: const BoxDecoration(
             image: DecorationImage(
-                image: NetworkImage('https://imgur.com/YC7kYZk.png'),
+                image: AssetImage('assets/desktop-bg-kv.webp'),
                 fit: BoxFit.cover)),
         child: ListView(children: [
           // 上方資料卡片容器
@@ -54,7 +55,7 @@ class CommodityInfoPage extends ConsumerWidget {
                 decoration: const BoxDecoration(
                     image: DecorationImage(
                         image: NetworkImage(
-                            'https://qpptec.com/img/defaultBg.png'),
+                            'assets/desktop-pic-commodity-largepic-sample-general.webp'),
                         fit: BoxFit.cover)),
                 child: Column(children: [
                   // 物品 icon
@@ -186,8 +187,8 @@ TableRow _itemCategoryTableRow(
         verticalAlignment: TableCellVerticalAlignment.baseline,
         child: Row(children: [
           // 類別 icon
-          Image.asset(
-            'assets/mobile-icon-actionbar-language-normal.webp',
+          SvgPicture.asset(
+            'desktop-icon-display-treasure.svg',
             width: 20,
           ),
 
@@ -242,9 +243,8 @@ TableRow _itemCreatorTableRow(
             padding: const EdgeInsets.only(right: 60),
             child: Row(children: [
               // 官方 icon
-              Image.asset(
-                'assets/mobile-icon-actionbar-language-normal.webp',
-                width: 20,
+              SvgPicture.asset(
+                'mobile-icon-newsfeed-official-small.svg',
               ),
               const SizedBox(
                 width: 10,
@@ -268,11 +268,13 @@ TableRow _itemCreatorTableRow(
                   child: Text(
                 '',
               )),
-              const Icon(
-                Icons.keyboard_arrow_right,
-                color: Colors.white,
-                size: 30,
-              ),
+              // 物件左右翻轉, 或用 RotatedBox
+              Directionality(
+                  textDirection: TextDirection.rtl,
+                  child: SvgPicture.asset(
+                    'mobile-icon-actionbar-back-normal.svg',
+                    matchTextDirection: true,
+                  )),
             ]),
           ),
         ),

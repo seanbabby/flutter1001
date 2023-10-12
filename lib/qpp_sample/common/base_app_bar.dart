@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_portal/flutter_portal.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:hello_mdfk/qpp_sample/qpp_country.dart';
 
 class BaseAppBar extends StatelessWidget {
@@ -15,9 +16,8 @@ class BaseAppBar extends StatelessWidget {
         // 左邊的圖片
         IconButton(
           iconSize: 160,
-          icon: Image.network(
-            'https://qpptec.com/img/logo.png',
-            filterQuality: FilterQuality.high,
+          icon: SvgPicture.asset(
+            'desktop-pic-qpp-logo-01.svg',
             fit: BoxFit.fill,
           ),
           onPressed: () => {print('Click QPP HomePage')},
@@ -145,8 +145,9 @@ class _ExtendCountryBox extends ConsumerWidget {
           children: _buttonItems(),
         ),
         child: IconButton(
-          icon:
-              Image.asset('assets/mobile-icon-actionbar-language-normal.webp'),
+          icon: SvgPicture.asset(
+            'mobile-icon-actionbar-language-normal.svg',
+          ),
           onPressed: () {
             notifier.onClick();
           },
