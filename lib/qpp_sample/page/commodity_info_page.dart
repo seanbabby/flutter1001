@@ -62,6 +62,11 @@ class CommodityInfoPage extends ConsumerWidget {
                   ClipOval(
                     child: Image.network(
                       'https://storage.googleapis.com/qpp_blockchain/Item/9E56D46E4848CD1BBF82A8ADA053FF68806193A204F47058B2FB87AB0C32288C_109555_Image1.png?v=1683259489078672',
+                      errorBuilder: (context, error, stackTrace) {
+                        return SvgPicture.asset(
+                          'desktop-pic-commodity-avatar-default.svg',
+                        );
+                      },
                       width: 100,
                       filterQuality: FilterQuality.high,
                       fit: BoxFit.fitWidth,
