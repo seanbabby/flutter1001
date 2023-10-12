@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_portal/flutter_portal.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:hello_mdfk/qpp_sample/common/qpp_color.dart';
 import 'package:hello_mdfk/qpp_sample/qpp_country.dart';
 
 class BaseAppBar extends StatelessWidget {
@@ -30,7 +31,7 @@ class BaseAppBar extends StatelessWidget {
               '產品介紹',
               style: TextStyle(
                   fontSize: 16,
-                  color: Colors.white,
+                  color: QppColor.white,
                   fontWeight: FontWeight.w500),
             )),
         const SizedBox(
@@ -42,7 +43,7 @@ class BaseAppBar extends StatelessWidget {
               '產品特色',
               style: TextStyle(
                   fontSize: 16,
-                  color: Colors.white,
+                  color: QppColor.white,
                   fontWeight: FontWeight.w500),
             )),
         const SizedBox(
@@ -54,7 +55,7 @@ class BaseAppBar extends StatelessWidget {
               '使用說明',
               style: TextStyle(
                   fontSize: 16,
-                  color: Colors.white,
+                  color: QppColor.white,
                   fontWeight: FontWeight.w500),
             )),
         const SizedBox(
@@ -66,7 +67,7 @@ class BaseAppBar extends StatelessWidget {
               '聯繫我們',
               style: TextStyle(
                   fontSize: 16,
-                  color: Colors.white,
+                  color: QppColor.white,
                   fontWeight: FontWeight.w500),
             )),
         const SizedBox(
@@ -87,7 +88,7 @@ List<Widget> _buttonItems() {
               return ListTile(
                   title: Text(
                     country.buttonTitle,
-                    style: const TextStyle(color: Colors.white, fontSize: 13),
+                    style: const TextStyle(color: QppColor.white, fontSize: 13),
                   ),
                   onTap: () {
                     notifier.onClick();
@@ -179,8 +180,7 @@ class _Popup extends StatelessWidget {
               onExit: (event) => notifier.closeList(),
               child: ref.watch(languageListProvider)
                   ? Card(
-                      color:
-                          const Color.fromARGB(128, 9, 17, 54).withOpacity(0.6),
+                      color: QppColor.onyx80,
                       elevation: 0,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8),

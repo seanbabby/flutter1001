@@ -13,14 +13,14 @@ class CommodityInfoPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      backgroundColor: QppColor.oxfordBlue.color,
+      backgroundColor: QppColor.oxfordBlue,
       // 是否延伸body至底部
       extendBody: true,
       // 是否延伸body至顶部
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: QppColor.onyx60.color,
+        backgroundColor: QppColor.onyx60,
         toolbarHeight: 100,
         elevation: 0,
         title: const BaseAppBar(),
@@ -39,7 +39,7 @@ class CommodityInfoPage extends ConsumerWidget {
             clipBehavior: Clip.hardEdge,
             semanticContainer: false,
             margin: const EdgeInsets.fromLTRB(80, 60, 80, 40),
-            color: QppColor.onyx80.color,
+            color: QppColor.prussianBlue,
             shape: RoundedRectangleBorder(
               // 圓角參數
               borderRadius: BorderRadius.circular(8),
@@ -79,7 +79,7 @@ class CommodityInfoPage extends ConsumerWidget {
                   // 物品名稱
                   const Text(
                     'item item item',
-                    style: TextStyle(fontSize: 30, color: Colors.white),
+                    style: TextStyle(fontSize: 30, color: QppColor.white),
                   ),
                 ]),
               ),
@@ -114,7 +114,7 @@ class CommodityInfoPage extends ConsumerWidget {
                 borderRadius: BorderRadius.circular(8),
               ),
               child: QrImageView(
-                backgroundColor: Colors.white,
+                backgroundColor: QppColor.white,
                 data:
                     'https://qpptec.com/app/commodity_info?commodityID=109555&sharer=SUV5G42V&lang=zh_TW&openExternalBrowser=1&action=stay',
                 size: 150,
@@ -129,7 +129,7 @@ class CommodityInfoPage extends ConsumerWidget {
               textAlign: TextAlign.center,
               style: TextStyle(
                   fontSize: 15,
-                  color: Colors.yellow,
+                  color: QppColor.indianYellow,
                   fontWeight: FontWeight.w500),
             ),
           ),
@@ -137,38 +137,6 @@ class CommodityInfoPage extends ConsumerWidget {
       ),
     );
   }
-}
-
-TableRow _itemTableRow({required String property, required String value}) {
-  return TableRow(
-    children: [
-      // title
-      TableCell(
-        // TableCellVerticalAlignment 表格组件
-        // https://zhuanlan.zhihu.com/p/587061207
-        verticalAlignment: TableCellVerticalAlignment.baseline,
-        child: Padding(
-          padding: const EdgeInsets.only(left: 60, top: 15, bottom: 15),
-          child: Text(
-            property,
-            style: const TextStyle(
-                color: Color.fromARGB(255, 161, 207, 255), fontSize: 20),
-          ),
-        ),
-      ),
-      // data
-      TableCell(
-        verticalAlignment: TableCellVerticalAlignment.baseline,
-        child: Padding(
-          padding: const EdgeInsets.only(top: 15, bottom: 15),
-          child: Text(
-            value,
-            style: const TextStyle(color: Colors.white, fontSize: 20),
-          ),
-        ),
-      ),
-    ],
-  );
 }
 
 // 類別 item
@@ -183,8 +151,7 @@ TableRow _itemCategoryTableRow(
           padding: const EdgeInsets.only(left: 60, top: 15, bottom: 15),
           child: Text(
             property,
-            style: const TextStyle(
-                color: Color.fromARGB(255, 161, 207, 255), fontSize: 20),
+            style: const TextStyle(color: QppColor.babyBlueEyes, fontSize: 20),
           ),
         ),
       ),
@@ -204,7 +171,7 @@ TableRow _itemCategoryTableRow(
           // 類別
           Text(
             value,
-            style: const TextStyle(color: Colors.white, fontSize: 20),
+            style: const TextStyle(color: QppColor.white, fontSize: 20),
           ),
           const SizedBox(
             width: 10,
@@ -212,8 +179,8 @@ TableRow _itemCategoryTableRow(
           // id
           Text(
             value,
-            style: const TextStyle(
-                color: Color.fromARGB(255, 89, 255, 193), fontSize: 20),
+            style:
+                const TextStyle(color: QppColor.mediumAquamarine, fontSize: 20),
           ),
         ]),
       ),
@@ -233,8 +200,7 @@ TableRow _itemCreatorTableRow(
           padding: const EdgeInsets.only(left: 60, top: 15, bottom: 15),
           child: Text(
             property,
-            style: const TextStyle(
-                color: Color.fromARGB(255, 161, 207, 255), fontSize: 20),
+            style: const TextStyle(color: QppColor.babyBlueEyes, fontSize: 20),
           ),
         ),
       ),
@@ -258,8 +224,8 @@ TableRow _itemCreatorTableRow(
               // 創建者 id
               Text(
                 value,
-                style: const TextStyle(
-                    color: Color.fromARGB(255, 255, 185, 42), fontSize: 20),
+                style:
+                    const TextStyle(color: QppColor.indianYellow, fontSize: 20),
               ),
               const SizedBox(
                 width: 10,
@@ -267,8 +233,8 @@ TableRow _itemCreatorTableRow(
               // 創建者 name
               Text(
                 value,
-                style: const TextStyle(
-                    color: Color.fromARGB(255, 255, 185, 42), fontSize: 20),
+                style:
+                    const TextStyle(color: QppColor.indianYellow, fontSize: 20),
               ),
               const Expanded(
                   child: Text(
@@ -301,8 +267,7 @@ TableRow _itemDescriptionTableRow(
           padding: const EdgeInsets.only(left: 60, top: 15, bottom: 15),
           child: Text(
             property,
-            style: const TextStyle(
-                color: Color.fromARGB(255, 161, 207, 255), fontSize: 20),
+            style: const TextStyle(color: QppColor.babyBlueEyes, fontSize: 20),
           ),
         ),
       ),
@@ -316,7 +281,7 @@ TableRow _itemDescriptionTableRow(
             value,
             textDirection: TextDirection.ltr,
             softWrap: true,
-            style: const TextStyle(color: Colors.white, fontSize: 20),
+            style: const TextStyle(color: QppColor.white, fontSize: 20),
           ),
         ),
       ),

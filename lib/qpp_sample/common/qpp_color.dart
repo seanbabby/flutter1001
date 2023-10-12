@@ -1,114 +1,69 @@
-import 'dart:ui';
+import 'package:flutter/material.dart';
 
-/// 顏色取用
-enum QppColor {
+/// QPP 顏色定義
+abstract final class QppColor {
   /// qpp basic website palette / text color
-  white,
+  static const Color white = Colors.white;
 
   /// qpp basic website palette
-  spiroDiscoBall,
+  static const Color spiroDiscoBall = Color(0xFF22B9FF);
 
   /// qpp basic website palette
-  manatee,
+  static const Color manatee = Color(0xFF959595);
 
   /// qpp basic website palette
-  oliveDrab,
+  static const Color oliveDrab = Color(0xFF313131);
 
   /// qpp basic website palette
-  laserLemon,
+  static const Color laserLemon = Color(0xFFFDEB1E);
 
   /// qpp basic website palette
-  yaleBlue,
-
-  /// qpp basic website palette
-  onyx,
-
-  /// qpp text color
-  platinum,
-
-  /// qpp text color
-  pastelBlue,
-
-  /// qpp text color
-  babyBlueEyes,
-
-  /// qpp text color
-  mayaBlue,
-
-  /// qpp text color
-  lapisLazuli,
-
-  /// qpp text color
-  indianYellow,
-
-  /// qpp text color
-  outrageousOrange,
-
-  /// qpp bg color
-  oxfordBlue,
-
-  /// qpp bg color
-  prussianBlue,
-
-  /// qpp bg color
-  stPatrickBlue,
-
-  /// qpp line color
-  cobaltBlue,
+  static const Color onyx = Color(0xFF000B2B);
 
   /// onyx color with opacity 80%
-  onyx80,
+  static Color onyx80 = QppColor.onyx.withOpacity(0.8);
 
   /// onyx color with opacity 60%
-  onyx60,
-}
+  static Color onyx60 = QppColor.onyx.withOpacity(0.6);
 
-extension QppColorExtension on QppColor {
-  Color get color {
-    switch (this) {
-      case QppColor.white:
-        return const Color(0xFFFFFFFF);
-      case QppColor.spiroDiscoBall:
-        return const Color(0xFF22B9FF);
-      case QppColor.manatee:
-        return const Color(0xFF959595);
-      case QppColor.oliveDrab:
-        return const Color(0xFF313131);
-      case QppColor.laserLemon:
-        return const Color(0xFFFDEB1E);
-      case QppColor.onyx:
-        return const Color(0xFF000B2B);
-      case QppColor.onyx80:
-        return (QppColor.onyx.color).withOpacity(0.8);
-      case QppColor.onyx60:
-        return (QppColor.onyx.color).withOpacity(0.6);
-      case QppColor.yaleBlue:
-        return const Color(0xFF1E4287);
-      case QppColor.platinum:
-        return const Color(0xFFD7E1EC);
-      case QppColor.pastelBlue:
-        return const Color(0xFFB4C7DC);
-      case QppColor.babyBlueEyes:
-        return const Color(0xFFA1CFFF);
-      case QppColor.mayaBlue:
-        return const Color(0xFF56DFF9);
-      case QppColor.lapisLazuli:
-        return const Color(0xFF395594);
-      case QppColor.indianYellow:
-        return const Color(0xFFEBBC5A);
-      case QppColor.outrageousOrange:
-        return const Color(0xFFFF6C52);
-      case QppColor.prussianBlue:
-        return const Color(0xFF182855);
-      case QppColor.stPatrickBlue:
-        return const Color(0xFF1B3267);
-      case QppColor.cobaltBlue:
-        return const Color(0xFF323DB0);
-      case QppColor.oxfordBlue:
-      default:
-        return const Color(0xFF162044);
-    }
-  }
+  /// qpp text color
+  static const Color yaleBlue = Color(0xFF1E4287);
+
+  /// qpp text color
+  static const Color platinum = Color(0xFFD7E1EC);
+
+  /// qpp text color
+  static const Color pastelBlue = Color(0xFFB4C7DC);
+
+  /// qpp text color
+  static const Color babyBlueEyes = Color(0xFFA1CFFF);
+
+  /// qpp text color
+  static const Color mayaBlue = Color(0xFF56DFF9);
+
+  /// qpp text color
+  static const Color lapisLazuli = Color(0xFF395594);
+
+  /// qpp text color
+  static const Color indianYellow = Color(0xFFEBBC5A);
+
+  /// qpp text color
+  static const Color outrageousOrange = Color(0xFFFF6C52);
+
+  /// qpp text color
+  static const Color mediumAquamarine = Color(0xFF59FFC1);
+
+  /// qpp bg color
+  static const Color prussianBlue = Color(0xFF182855);
+
+  /// qpp bg color
+  static const Color stPatrickBlue = Color(0xFF1B3267);
+
+  /// qpp bg color
+  static const Color oxfordBlue = Color(0xFF162044);
+
+  /// qpp line color
+  static const Color cobaltBlue = Color(0xFF323DB0);
 }
 
 // Opacity(不透明度) of the color
