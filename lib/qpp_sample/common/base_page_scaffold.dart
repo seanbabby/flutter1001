@@ -1,82 +1,105 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_portal/flutter_portal.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
 import 'package:hello_mdfk/qpp_sample/common/qpp_color.dart';
 import 'package:hello_mdfk/qpp_sample/qpp_country.dart';
 
-class BaseAppBar extends StatelessWidget {
-  const BaseAppBar({super.key});
+/// 基本頁面
+Scaffold basePageScaffold(Widget content) {
+  return Scaffold(
+    backgroundColor: QppColor.oxfordBlue,
+    // 是否延伸body至底部
+    extendBody: true,
+    // 是否延伸body至顶部
+    extendBodyBehindAppBar: true,
+    appBar: AppBar(
+      automaticallyImplyLeading: false,
+      backgroundColor: QppColor.onyx60,
+      toolbarHeight: 100,
+      elevation: 0,
+      title: _appBar(),
+    ),
+    body: //使用 container 做 body 容器
+        Container(
+      // body 容器 bg
+      decoration: const BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage('assets/desktop-bg-kv.webp'),
+              fit: BoxFit.cover)),
+      child: content,
+    ),
+  );
+}
 
-  @override
-  Widget build(BuildContext context) {
-    // TODO: 增加行動裝置尺寸
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        // 左邊的圖片
-        IconButton(
-          iconSize: 160,
-          icon: SvgPicture.asset(
-            'desktop-pic-qpp-logo-01.svg',
-          ),
-          onPressed: () => {print('Click QPP HomePage')},
+Widget _appBar() {
+  // TODO: 增加行動裝置尺寸
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.start,
+    crossAxisAlignment: CrossAxisAlignment.center,
+    children: [
+      // 左邊的圖片
+      IconButton(
+        iconSize: 160,
+        icon: SvgPicture.asset(
+          'desktop-pic-qpp-logo-01.svg',
         ),
-        // 擠右邊的東西用
-        const Expanded(child: Text('')),
-        TextButton(
-            onPressed: () => {print('Click 產品介紹')},
-            child: const Text(
-              '產品介紹',
-              style: TextStyle(
-                  fontSize: 16,
-                  color: QppColor.white,
-                  fontWeight: FontWeight.w500),
-            )),
-        const SizedBox(
-          width: 30,
-        ),
-        TextButton(
-            onPressed: () => {print('Click 產品特色')},
-            child: const Text(
-              '產品特色',
-              style: TextStyle(
-                  fontSize: 16,
-                  color: QppColor.white,
-                  fontWeight: FontWeight.w500),
-            )),
-        const SizedBox(
-          width: 30,
-        ),
-        TextButton(
-            onPressed: () => {print('Click 使用說明')},
-            child: const Text(
-              '使用說明',
-              style: TextStyle(
-                  fontSize: 16,
-                  color: QppColor.white,
-                  fontWeight: FontWeight.w500),
-            )),
-        const SizedBox(
-          width: 30,
-        ),
-        TextButton(
-            onPressed: () => {print('Click 聯繫我們')},
-            child: const Text(
-              '聯繫我們',
-              style: TextStyle(
-                  fontSize: 16,
-                  color: QppColor.white,
-                  fontWeight: FontWeight.w500),
-            )),
-        const SizedBox(
-          width: 30,
-        ),
-        _ExtendCountryBox(),
-      ],
-    );
-  }
+        onPressed: () => {print('Click QPP HomePage')},
+      ),
+      // 擠右邊的東西用
+      const Expanded(child: Text('')),
+      TextButton(
+          onPressed: () => {print('Click 產品介紹')},
+          child: const Text(
+            '產品介紹',
+            style: TextStyle(
+                fontSize: 16,
+                color: QppColor.white,
+                fontWeight: FontWeight.w500),
+          )),
+      const SizedBox(
+        width: 30,
+      ),
+      TextButton(
+          onPressed: () => {print('Click 產品特色')},
+          child: const Text(
+            '產品特色',
+            style: TextStyle(
+                fontSize: 16,
+                color: QppColor.white,
+                fontWeight: FontWeight.w500),
+          )),
+      const SizedBox(
+        width: 30,
+      ),
+      TextButton(
+          onPressed: () => {print('Click 使用說明')},
+          child: const Text(
+            '使用說明',
+            style: TextStyle(
+                fontSize: 16,
+                color: QppColor.white,
+                fontWeight: FontWeight.w500),
+          )),
+      const SizedBox(
+        width: 30,
+      ),
+      TextButton(
+          onPressed: () => {print('Click 聯繫我們')},
+          child: const Text(
+            '聯繫我們',
+            style: TextStyle(
+                fontSize: 16,
+                color: QppColor.white,
+                fontWeight: FontWeight.w500),
+          )),
+      const SizedBox(
+        width: 30,
+      ),
+      _ExtendCountryBox(),
+    ],
+  );
 }
 
 List<Widget> _buttonItems() {

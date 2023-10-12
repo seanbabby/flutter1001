@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:hello_mdfk/qpp_sample/common/base_app_bar.dart';
-import 'package:hello_mdfk/qpp_sample/common/base_body.dart';
+import 'package:hello_mdfk/qpp_sample/common/base_page_scaffold.dart';
 import 'package:hello_mdfk/qpp_sample/common/qpp_color.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
@@ -13,21 +12,7 @@ class CommodityInfoPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Scaffold(
-      backgroundColor: QppColor.oxfordBlue,
-      // 是否延伸body至底部
-      extendBody: true,
-      // 是否延伸body至顶部
-      extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        backgroundColor: QppColor.onyx60,
-        toolbarHeight: 100,
-        elevation: 0,
-        title: const BaseAppBar(),
-      ),
-      body: BaseBody(child: _commodityInfo()),
-    );
+    return basePageScaffold(_commodityInfo());
   }
 }
 
