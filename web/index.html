@@ -49,6 +49,8 @@
           },
           onEntrypointLoaded: function (engineInitializer) {
             // 防止載入中文時亂碼
+            // https://docs.flutter.dev/platform-integration/web/renderers
+            // https://juejin.cn/post/7156106959001747493
             let config = { render: "html" };
             engineInitializer
               .initializeEngine(config)
