@@ -18,7 +18,6 @@ class BaseAppBar extends StatelessWidget {
           iconSize: 160,
           icon: SvgPicture.asset(
             'desktop-pic-qpp-logo-01.svg',
-            fit: BoxFit.fill,
           ),
           onPressed: () => {print('Click QPP HomePage')},
         ),
