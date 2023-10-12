@@ -13,7 +13,7 @@ class CommodityInfoPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      backgroundColor: QppColor.yaleBlue.color,
+      backgroundColor: QppColor.oxfordBlue.color,
       // 是否延伸body至底部
       extendBody: true,
       // 是否延伸body至顶部

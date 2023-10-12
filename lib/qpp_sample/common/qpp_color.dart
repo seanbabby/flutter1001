@@ -2,7 +2,7 @@ import 'dart:ui';
 
 /// 顏色取用
 enum QppColor {
-  /// qpp basic website palette
+  /// qpp basic website palette / text color
   white,
 
   /// qpp basic website palette
@@ -22,6 +22,39 @@ enum QppColor {
 
   /// qpp basic website palette
   onyx,
+
+  /// qpp text color
+  platinum,
+
+  /// qpp text color
+  pastelBlue,
+
+  /// qpp text color
+  babyBlueEyes,
+
+  /// qpp text color
+  mayaBlue,
+
+  /// qpp text color
+  lapisLazuli,
+
+  /// qpp text color
+  indianYellow,
+
+  /// qpp text color
+  outrageousOrange,
+
+  /// qpp bg color
+  oxfordBlue,
+
+  /// qpp bg color
+  prussianBlue,
+
+  /// qpp bg color
+  stPatrickBlue,
+
+  /// qpp line color
+  cobaltBlue,
 
   /// onyx color with opacity 80%
   onyx80,
@@ -50,8 +83,30 @@ extension QppColorExtension on QppColor {
       case QppColor.onyx60:
         return (QppColor.onyx.color).withOpacity(0.6);
       case QppColor.yaleBlue:
-      default:
         return const Color(0xFF1E4287);
+      case QppColor.platinum:
+        return const Color(0xFFD7E1EC);
+      case QppColor.pastelBlue:
+        return const Color(0xFFB4C7DC);
+      case QppColor.babyBlueEyes:
+        return const Color(0xFFA1CFFF);
+      case QppColor.mayaBlue:
+        return const Color(0xFF56DFF9);
+      case QppColor.lapisLazuli:
+        return const Color(0xFF395594);
+      case QppColor.indianYellow:
+        return const Color(0xFFEBBC5A);
+      case QppColor.outrageousOrange:
+        return const Color(0xFFFF6C52);
+      case QppColor.prussianBlue:
+        return const Color(0xFF182855);
+      case QppColor.stPatrickBlue:
+        return const Color(0xFF1B3267);
+      case QppColor.cobaltBlue:
+        return const Color(0xFF323DB0);
+      case QppColor.oxfordBlue:
+      default:
+        return const Color(0xFF162044);
     }
   }
 }
