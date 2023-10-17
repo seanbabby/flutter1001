@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hello_mdfk/qpp_sample/common/base_page_scaffold.dart';
 import 'package:hello_mdfk/qpp_sample/common/qpp_color.dart';
@@ -12,6 +13,7 @@ class CommodityInfoPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    ScreenUtil.init(context, designSize: const Size(1920, 1080));
     return basePageScaffold(_commodityInfo());
   }
 }
@@ -23,7 +25,7 @@ Widget _commodityInfo() {
       // 切子元件超出範圍
       clipBehavior: Clip.hardEdge,
       semanticContainer: false,
-      margin: const EdgeInsets.fromLTRB(80, 60, 80, 40),
+      margin: EdgeInsets.fromLTRB(120.w, 60.h, 120.w, 40),
       color: QppColor.prussianBlue,
       shape: RoundedRectangleBorder(
         // 圓角參數

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_portal/flutter_portal.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hello_mdfk/colors.dart';
 
@@ -21,7 +22,8 @@ const flutterDevAccountId = 'UCwXdFgeE9KYzlDdR7TG9cMw';
 // Replace with your YouTube API Key
 const youTubeApiKey = 'AIzaSyCH4gbwsktwSpJrESqNMGDnk7MOymMKY88';
 
-void main() {
+void main() async {
+  await ScreenUtil.ensureScreenSize();
   runApp(const ProviderScope(child: Portal(child: MyApp())));
 }
 
