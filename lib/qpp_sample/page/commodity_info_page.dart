@@ -1,7 +1,11 @@
+import 'dart:convert';
+
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:hello_mdfk/qpp_sample/apis/item_api.dart';
 import 'package:hello_mdfk/qpp_sample/common/base_page_scaffold.dart';
 import 'package:hello_mdfk/qpp_sample/common/qpp_color.dart';
 import 'package:qr_flutter/qr_flutter.dart';
@@ -19,6 +23,23 @@ class CommodityInfoPage extends ConsumerWidget {
 }
 
 Widget _commodityInfo() {
+  final dio = Dio();
+  dio.options.responseType = ResponseType.json;
+  final client = ItemApi(dio);
+  String jj = json.encode({
+    'itemIds': [
+      114340,
+    ]
+  });
+  client.postItemSelect(jj).then((value) {
+    print('Success');
+  });
+
+  // Future<ItemSelectResponse> re = ItemApi(dio).postItemSelect(json.encode({
+  //   'itemIds': [
+  //     114340,
+  //   ]
+  // }));
   return ListView(children: [
     // 上方資料卡片容器
     Card(

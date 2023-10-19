@@ -23,10 +23,13 @@ const storage = kReleaseMode
     ? "https://storage.googleapis.com/qpp_blockchain/"
     : "https://storage.googleapis.com/qpp_blockchain_test/";
 
+// /// GCP API- 正式 / 測試
+// const gcp = kDebugMode
+//     ? "https://pro2-api.qpptec.com/client/"
+//     : "https://dev2-api.qpptec.com/client/";
+
 /// GCP API- 正式 / 測試
-const gcp = kDebugMode
-    ? "https://pro2-api.qpptec.com/client/"
-    : "https://dev2-api.qpptec.com/client/";
+const gcp = "https://dev2-api.qpptec.com/client/";
 
 /// Polygonscan位址
 const polygonUrl = "https://polygonscan.com/tx/";
